@@ -150,9 +150,8 @@ class _ShowcaseState extends State<Showcase> with TickerProviderStateMixin {
   void initState() {
     super.initState();
 
-
     _slideAnimationController = AnimationController(
-      duration: widget.animationDuration,
+      duration: Duration(),
       vsync: this,
     )..addStatusListener((status) {
         if (status == AnimationStatus.completed) {
@@ -165,13 +164,10 @@ class _ShowcaseState extends State<Showcase> with TickerProviderStateMixin {
         }
       });
 
-    if(widget.disableAnimation){
-      _slideAnimation = CurvedAnimation(
-        parent: _slideAnimationController,
-        curve: Curves.easeInOut,
-      );
-    }
-
+    _slideAnimation = CurvedAnimation(
+      parent: _slideAnimationController,
+      curve: Curves.easeInOut,
+    );
   }
 
   @override
