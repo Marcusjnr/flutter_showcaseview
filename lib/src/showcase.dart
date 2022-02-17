@@ -159,16 +159,19 @@ class _ShowcaseState extends State<Showcase> with TickerProviderStateMixin {
           _slideAnimationController.reverse();
         }
         if (_slideAnimationController.isDismissed) {
-          if (widget.disableAnimation) {
+          if (!widget.disableAnimation) {
             _slideAnimationController.forward();
           }
         }
       });
 
-    _slideAnimation = CurvedAnimation(
-      parent: _slideAnimationController,
-      curve: Curves.easeInOut,
-    );
+    if(widget.disableAnimation){
+      _slideAnimation = CurvedAnimation(
+        parent: _slideAnimationController,
+        curve: Curves.easeInOut,
+      );
+    }
+
   }
 
   @override
