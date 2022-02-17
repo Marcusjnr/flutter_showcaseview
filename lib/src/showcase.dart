@@ -150,6 +150,7 @@ class _ShowcaseState extends State<Showcase> with TickerProviderStateMixin {
   void initState() {
     super.initState();
 
+
     _slideAnimationController = AnimationController(
       duration: widget.animationDuration,
       vsync: this,
@@ -158,7 +159,7 @@ class _ShowcaseState extends State<Showcase> with TickerProviderStateMixin {
           _slideAnimationController.reverse();
         }
         if (_slideAnimationController.isDismissed) {
-          if (!widget.disableAnimation) {
+          if (widget.disableAnimation) {
             _slideAnimationController.forward();
           }
         }
